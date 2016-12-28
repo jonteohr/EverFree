@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PluginMain extends JavaPlugin {
 
-	private Permission admin = new Permission("everfree.admin");
+	public Permission admin = new Permission("everfree.admin");
 
 	public void onEnable() {
 		getLogger().info("Plugin enabled!");
@@ -35,9 +35,11 @@ public class PluginMain extends JavaPlugin {
 		if (cmd.getName().equalsIgnoreCase("everfree")) {
 			
 			if (args.length < 1) {
+				p.sendMessage("---------------------------------------------");
 				p.sendMessage(ChatColor.RED + "Not enough arguments..");
 				p.sendMessage(ChatColor.YELLOW + "Correct usage: /everfree <argument>");
 				p.sendMessage(ChatColor.YELLOW + "Available arguments: version, reload, info");
+				p.sendMessage("---------------------------------------------");
 			} else if (args.length == 1) {
 				
 				if (args[0].equalsIgnoreCase("version")) {
@@ -50,13 +52,15 @@ public class PluginMain extends JavaPlugin {
 						reloadConfig();
 						p.sendMessage(ChatColor.GREEN + "Config reloaded!");
 					} else {
-						p.sendMessage(ChatColor.RED + "You don't have correct permissions..");
+						p.sendMessage(ChatColor.RED + "You don't have the correct permissions..");
 					}
 				}
 				
 				if(args[0].equalsIgnoreCase("info")) {
+					p.sendMessage("---------------------------------------------");
 					p.sendMessage(ChatColor.YELLOW + "This plugin was made by Condolent for the EverFree Server.");
 					p.sendMessage(ChatColor.AQUA + "http://twitter.com/hyprcsgo");
+					p.sendMessage("---------------------------------------------");
 				}
 				
 			}

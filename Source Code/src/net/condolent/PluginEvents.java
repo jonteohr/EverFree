@@ -51,7 +51,16 @@ public class PluginEvents implements Listener {
 		}
 		
 		if(plugin.getConfig().getInt("playerJoinMsg") == 1) {
-			e.setJoinMessage(ChatColor.BOLD + "* " + ChatColor.GREEN + p.getName() + ChatColor.RESET + "" + ChatColor.GREEN + " has joined the server!");
+			if(plugin.getConfig().getInt("adminJoinMsg") == 1) {
+				if(p.isOp() || p.hasPermission(plugin.admin)) {
+					e.setJoinMessage(ChatColor.BOLD + "* [Admin] " + ChatColor.GREEN + p.getName() + ChatColor.RESET + "" + ChatColor.GREEN + " has joined the server!");
+				} else {
+					// If player is not an admin
+					e.setJoinMessage(ChatColor.BOLD + "* " + ChatColor.GREEN + p.getName() + ChatColor.RESET + "" + ChatColor.GREEN + " has joined the server!");
+				}
+			} else {
+				e.setJoinMessage(ChatColor.BOLD + "* " + ChatColor.GREEN + p.getName() + ChatColor.RESET + "" + ChatColor.GREEN + " has joined the server!");
+			}
 		} else {
 			// Do nothing
 		}

@@ -6,5 +6,9 @@ playerJoinSound: 1
 # 1 = true, 0 = false
 playerJoinMsg: 0
 
+# If playerJoinMsg is enabled, this enables/disables a special message for admins that joins
+# 1 = true, 0 = false
+adminJoinMsg: 1
+
 # Play sound when someone sends a message
 chatSound: 1
