@@ -6,4 +6,6 @@ Custom plugin created for EverFree
   
   
 ## Permission
-**everfree.admin** - Admin permissions. _Basically just reloading the config via command_
+|Node|Description|
+:---:|---
+|**everfree.admin**|Basic permission for admin commands. At the moment it's just for reloading the config.
