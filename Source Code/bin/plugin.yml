@@ -1,0 +1,7 @@
+name: EverFree
+main: net.condolent.PluginMain
+version: 1.0
+author: Condolent
+commands:
+   everfree:
+      description: Base command for everything.

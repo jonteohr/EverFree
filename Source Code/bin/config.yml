@@ -1,0 +1,10 @@
+# Play a sound when player joins.
+# 1 = true, 0 = false
+playerJoinSound: 1
+
+# Send a global chat message when player joins
+# 1 = true, 0 = false
+playerJoinMsg: 0
+
+# Play sound when someone sends a message
+chatSound: 1
