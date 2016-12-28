@@ -1,14 +1,11 @@
 # Play a sound when player joins.
-# 1 = true, 0 = false
-playerJoinSound: 1
+playerJoinSound: true
 
 # Send a global chat message when player joins
-# 1 = true, 0 = false
-playerJoinMsg: 0
+playerJoinMsg: false
 
 # If playerJoinMsg is enabled, this enables/disables a special message for admins that joins
-# 1 = true, 0 = false
-adminJoinMsg: 1
+adminJoinMsg: true
 
 # Play sound when someone sends a message
-chatSound: 1
+chatSound: true

@@ -15,16 +15,16 @@ public class PluginMain extends JavaPlugin {
 	public void onEnable() {
 		getLogger().info("Plugin enabled!");
 
-		this.getServer().getPluginManager().registerEvents(new PluginEvents(), this);
+		this.getServer().getPluginManager().registerEvents(new PluginEvents(this), this);
 
 		this.getConfig().options().copyDefaults(false);
-		saveConfig();
+		saveDefaultConfig();
 
 	}
 
 	public void onDisable() {
 		getLogger().info("Disabling plugin..");
-		saveConfig();
+		saveDefaultConfig();
 	}
 
 	PluginDescriptionFile pdf = this.getDescription();
