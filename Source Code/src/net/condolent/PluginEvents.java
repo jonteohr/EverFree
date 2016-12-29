@@ -35,7 +35,6 @@ public class PluginEvents implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		
 		// Play a sound on join?
 		if(plugin.getConfig().getBoolean("playerJoinSound")) {
 			for(Player allPlayers : Bukkit.getOnlinePlayers()) {

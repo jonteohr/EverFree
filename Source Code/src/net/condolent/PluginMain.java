@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,9 +13,16 @@ public class PluginMain extends JavaPlugin {
 
 	public Permission admin = new Permission("everfree.admin");
 
+	private static Plugin plugin;
+	public static Plugin getPlugin() {
+		return plugin;
+	}
+	
 	public void onEnable() {
 		getLogger().info("Plugin enabled!");
 
+		plugin = this;
+		
 		this.getServer().getPluginManager().registerEvents(new PluginEvents(this), this);
 
 		this.getConfig().options().copyDefaults(false);
@@ -29,12 +37,12 @@ public class PluginMain extends JavaPlugin {
 
 	PluginDescriptionFile pdf = this.getDescription();
 
-	public boolean onCommand(Command cmd, CommandSender sender, String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
 
 		if (cmd.getName().equalsIgnoreCase("everfree")) {
 			
-			if (args.length < 1) {
+			if (args.length < 1 || args.length > 1) {
 				p.sendMessage("---------------------------------------------");
 				p.sendMessage(ChatColor.RED + "Not enough arguments..");
 				p.sendMessage(ChatColor.YELLOW + "Correct usage: /everfree <argument>");
@@ -43,8 +51,7 @@ public class PluginMain extends JavaPlugin {
 			} else if (args.length == 1) {
 				
 				if (args[0].equalsIgnoreCase("version")) {
-					p.sendMessage(ChatColor.YELLOW + "This server is running version " + pdf.getVersion() + "of "
-							+ pdf.getName());
+					p.sendMessage(ChatColor.YELLOW + "This server is running version " + pdf.getVersion() + "of " + pdf.getName());
 				}
 				
 				if (args[0].equalsIgnoreCase("reload")) {
@@ -65,6 +72,7 @@ public class PluginMain extends JavaPlugin {
 				
 			}
 			
+			return true;
 		}
 
 		return false;
