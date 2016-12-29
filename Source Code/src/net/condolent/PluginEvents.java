@@ -1,7 +1,7 @@
 package net.condolent;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,11 +19,13 @@ public class PluginEvents implements Listener {
 	
 	@EventHandler
 	public void onMsgSound(AsyncPlayerChatEvent e) {
-		Player p = e.getPlayer();
-		Location location = p.getLocation();
+		/*Player p = (Player) Bukkit.getOnlinePlayers();
+		Location location = p.getLocation();*/
 
-		p.getWorld().playSound(location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
-		if(plugin.getConfig().getInt("chatSound") == 1) {
+		if(plugin.getConfig().getBoolean("chatSound")) {
+			for(Player allPlayers : Bukkit.getOnlinePlayers()) {
+				allPlayers.playSound(allPlayers.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
+			}
 		} else {
 			// Do nothing
 		}
@@ -33,10 +35,12 @@ public class PluginEvents implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		Location location = p.getLocation();
 		
+		// Play a sound on join?
 		if(plugin.getConfig().getBoolean("playerJoinSound")) {
-			p.getWorld().playSound(location, Sound.BLOCK_ANVIL_HIT, 1, 0);
+			for(Player allPlayers : Bukkit.getOnlinePlayers()) {
+				allPlayers.playSound(allPlayers.getLocation(), Sound.BLOCK_ANVIL_HIT, 1, 0);
+			}
 		} else {
 			// Do nothing
 		}

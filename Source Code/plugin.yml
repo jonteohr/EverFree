@@ -1,6 +1,6 @@
 name: EverFree
 main: net.condolent.PluginMain
-version: 1.0
+version: 1.2
 author: Condolent
 commands:
    everfree:
